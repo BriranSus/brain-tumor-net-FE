@@ -5,10 +5,13 @@ const BrainTumorPredictor: React.FC = () => {
   const [predictResult, setPredictResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<any>(null);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       setImageFile(e.target.files[0]);
+      const url = URL.createObjectURL(e.target.files[0]);
+      setPreviewUrl(url)
     }
     };
 
@@ -49,6 +52,11 @@ const BrainTumorPredictor: React.FC = () => {
           accept="image/*" 
           onChange={handleImageChange}
           className="text-[18px] bg-grey border-2 border-grey rounded-[5px] pl-[2rem] py-[6rem] cursor-pointer inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-light_grey hover:ring-2 hover:ring-grey focus:ring-2 focus:ring-grey" />
+        
+        {previewUrl && (
+          <img src={previewUrl} alt="" className="size-[12rem]"/>
+        )}
+
         <button 
           onClick={handlePredict} 
           disabled={loading || !imageFile}
