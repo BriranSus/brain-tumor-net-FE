@@ -34,12 +34,25 @@ const BrainTumorPredictor: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: "1rem" }}>
+    <div className="flex flex-col items-center">
+      <header className="bg-dark_grey border-b min-w-screen mb-[2rem]">
+        <div className="container px-[2rem]">
+          <h1 className="text-2xl font-bold">Brain Tumor Predictor</h1>
+        </div>
+      </header>
+
       <h2>Brain Tumor Prediction</h2>
 
-      <div>
-        <input type="file" accept="image/*" onChange={handleImageChange} />
-        <button onClick={handlePredict} disabled={loading || !imageFile}>
+      <div className="flex flex-col gap-[1rem] items-center justify-center min-w-screen">
+        <input 
+          type="file" 
+          accept="image/*" 
+          onChange={handleImageChange}
+          className="text-[18px] bg-grey border-2 border-grey rounded-[5px] pl-[2rem] py-[6rem] cursor-pointer inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-light_grey hover:ring-2 hover:ring-grey focus:ring-2 focus:ring-grey" />
+        <button 
+          onClick={handlePredict} 
+          disabled={loading || !imageFile}
+          className="min-w-[380px] text-center justify-center text-[18px] py-[1rem] border-2 border-dark_grey rounded-[5px] inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-grey hover:ring-2 hover:ring-dark_grey focus:ring-2 focus:ring-dark_grey cursor-pointer">
           {loading ? "Predicting..." : "Predict"}
         </button>
       </div>

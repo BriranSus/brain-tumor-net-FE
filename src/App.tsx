@@ -1,11 +1,11 @@
-import './App.css'
-import Predictor from './components/BrainTumorPredictor'
+import './App.css';
+import "./index.css";
+import Predictor from './components/BrainTumorPredictor';
 
 function App() {
 
   return (
-    <div>
-      <h1>Gradio API in React + TypeScript</h1>
+    <div className='flex flex-col items-center'>
       <Predictor />
     </div>
   )

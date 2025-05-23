@@ -1,1 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+@layer base {
+	body {
+		font-family: 'IBM Plex Sans';
+        margin: 0;
+        background-color: rgb(30, 30, 30);
+        color: white;
+	}
+
+    input[type="file"]::-webkit-file-upload-button {
+        display: none;
+    } */
+
+    input[type="file"]::file-selector-button {
+        display: none; 
+    }
+}
+
+@theme {
+    --color-*: initial;
+    --color-grey: #787878;
+    --color-light_grey: #b8b8b8;
+    --color-dark_grey: #2e2e2e;
+}
