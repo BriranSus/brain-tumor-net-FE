@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Client } from "@gradio/client";
+import brain from "../assets/brain.svg";
 
 const BrainTumorPredictor: React.FC = () => {
   const [predictResult, setPredictResult] = useState<any>(null);
@@ -39,7 +40,8 @@ const BrainTumorPredictor: React.FC = () => {
   return (
     <div className="flex flex-col items-center">
       <header className="bg-dark_grey border-b min-w-screen mb-[2rem]">
-        <div className="container px-[2rem]">
+        <div className="container px-[2rem] flex flex-row items-center">
+          <img src={brain} alt="" className="size-[32px] mr-[1rem]"/>
           <h1 className="text-2xl font-bold">Brain Tumor Predictor</h1>
         </div>
       </header>
