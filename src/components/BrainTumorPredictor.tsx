@@ -59,8 +59,8 @@ const BrainTumorPredictor: React.FC = () => {
         <div className="flex flex-col gap-[1rem] laptop:mr-[2rem] phone:mb-[2rem] items-center justify-center">
 
           <label>
-            {previewUrl ? <img src={previewUrl} className="laptop:size-[15.5rem] phone:size-[7.75rem] border px-[4rem] py-[3rem]" /> : 
-              <div className="laptop:min-w-[340px] laptop:text-[18px] bg-white border-2 border-dashed border-grey rounded-[5px] px-[1rem] py-[6rem] cursor-pointer inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-light_grey hover:ring-2 hover:ring-grey focus:ring-2 focus:ring-grey text-center justify-center phone:min-w-[170px] phone:text-[9px]">
+            {previewUrl ? <img src={previewUrl} className="laptop:size-[15.5rem] phone:size-[7.75rem] border px-[6rem] py-[3rem]" /> : 
+              <div className="laptop:min-w-[420px] laptop:text-[18px] bg-white border-2 border-dashed border-grey rounded-[5px] px-[1rem] py-[6rem] cursor-pointer inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-light_grey hover:ring-2 hover:ring-grey focus:ring-2 focus:ring-grey text-center justify-center phone:min-w-[250px] phone:text-[9px]">
                 <img src={upload} alt="" className="laptop:size-[48px] phone:size-[24px]" />
                 <p className="font-[600]">Click to upload your MRI scan here</p>
               </div>
@@ -75,7 +75,7 @@ const BrainTumorPredictor: React.FC = () => {
           {previewUrl && (
             <button
               onClick={handleRemoveImage}
-              className="absolute laptop:ml-[21rem] laptop:mb-[23rem] phone:ml-[13rem] phone:mb-[14rem] border rounded-[5px] text-background bg-white laptop:text-[18px] phone:text-[14px] cursor-pointer hover:bg-light_grey laptop:px-[8px] phone:px-[6px]"
+              className="absolute laptop:ml-[24rem] laptop:mb-[23rem] phone:ml-[17rem] phone:mb-[14rem] border rounded-[5px] text-background bg-white laptop:text-[18px] phone:text-[14px] cursor-pointer hover:bg-light_grey laptop:px-[8px] phone:px-[6px]"
             >
               x
             </button>
@@ -84,13 +84,13 @@ const BrainTumorPredictor: React.FC = () => {
           <button 
             onClick={handlePredict} 
             disabled={loading || !imageFile}
-            className="laptop:min-w-[380px] phone:min-w-[190px] text-center justify-center laptop:text-[18px] phone:text-[9px] laptop:py-[1rem] phone:py-[0.5rem] border-2 border-dark_grey rounded-[5px] inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-grey hover:ring-2 hover:ring-dark_grey focus:ring-2 focus:ring-dark_grey cursor-pointer">
+            className="laptop:min-w-[460px] phone:min-w-[270px] text-center justify-center laptop:text-[18px] phone:text-[9px] laptop:py-[1rem] phone:py-[0.5rem] border-2 border-dark_grey rounded-[5px] inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-grey hover:ring-2 hover:ring-dark_grey focus:ring-2 focus:ring-dark_grey cursor-pointer">
             {loading ? "Loading..." : "Analyze MRI Scan"}
           </button>
 
         </div> 
 
-        <div className="border border-grey laptop:min-w-[370px] laptop:min-h-[300px] phone:min-w-[185px] phone:min-h-[150px] flex flex-row justify-center items-center bg-dark_grey">
+        <div className="border border-grey laptop:min-w-[450px] laptop:min-h-[300px] phone:min-w-[265px] phone:min-h-[150px] flex flex-row justify-center items-center bg-dark_grey">
           {!predictResult && (
             <div className="laptop:text-[18px] phone:text-[9px]">
               <p>Upload an MRI scan to see prediction results</p>
