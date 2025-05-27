@@ -50,18 +50,18 @@ const BrainTumorPredictor: React.FC = () => {
     <div className="flex flex-col items-center">
       <header className="bg-dark_grey border-b min-w-screen mb-[2rem]">
         <div className="container px-[2rem] flex flex-row items-center">
-          <img src={brain} alt="" className="size-[32px] mr-[1rem]"/>
-          <h1 className="text-2xl font-bold">Brain Tumor Predictor</h1>
+          <img src={brain} alt="" className="laptop:size-[32px] phone:size-[18px] laptop:mr-[1rem] phone:mr-[0.5rem]"/>
+          <h1 className="laptop:text-[32px] phone:text-[16px] font-bold">Brain Tumor Predictor</h1>
         </div>
       </header>
 
-      <div className="flex flex-row ">
-        <div className="flex flex-col gap-[1rem] items-center justify-center mr-[2rem]">
+      <div className="flex laptop:flex-row phone:flex-col">
+        <div className="flex flex-col gap-[1rem] laptop:mr-[2rem] phone:mb-[2rem] items-center justify-center">
 
           <label>
-            {previewUrl ? <img src={previewUrl} className="size-[15.5rem] border px-[4rem] py-[3rem]" /> : 
-              <div className="min-w-[340px] text-[18px] bg-white border-2 border-dashed border-grey rounded-[5px] px-[1rem] py-[6rem] cursor-pointer inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-light_grey hover:ring-2 hover:ring-grey focus:ring-2 focus:ring-grey text-center justify-center">
-                <img src={upload} alt="" className="size-[48px]" />
+            {previewUrl ? <img src={previewUrl} className="laptop:size-[15.5rem] phone:size-[7.75rem] border px-[4rem] py-[3rem]" /> : 
+              <div className="laptop:min-w-[340px] laptop:text-[18px] bg-white border-2 border-dashed border-grey rounded-[5px] px-[1rem] py-[6rem] cursor-pointer inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-light_grey hover:ring-2 hover:ring-grey focus:ring-2 focus:ring-grey text-center justify-center phone:min-w-[170px] phone:text-[9px]">
+                <img src={upload} alt="" className="laptop:size-[48px] phone:size-[24px]" />
                 <p className="font-[600]">Click to upload your MRI scan here</p>
               </div>
             }
@@ -75,7 +75,7 @@ const BrainTumorPredictor: React.FC = () => {
           {previewUrl && (
             <button
               onClick={handleRemoveImage}
-              className="absolute ml-[21rem] mb-[23rem] border rounded-[5px] text-background bg-white text-[18px] cursor-pointer hover:bg-light_grey px-[8px]"
+              className="absolute laptop:ml-[21rem] laptop:mb-[23rem] phone:ml-[13rem] phone:mb-[14rem] border rounded-[5px] text-background bg-white laptop:text-[18px] phone:text-[14px] cursor-pointer hover:bg-light_grey laptop:px-[8px] phone:px-[6px]"
             >
               x
             </button>
@@ -84,15 +84,15 @@ const BrainTumorPredictor: React.FC = () => {
           <button 
             onClick={handlePredict} 
             disabled={loading || !imageFile}
-            className="min-w-[380px] text-center justify-center text-[18px] py-[1rem] border-2 border-dark_grey rounded-[5px] inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-grey hover:ring-2 hover:ring-dark_grey focus:ring-2 focus:ring-dark_grey cursor-pointer">
+            className="laptop:min-w-[380px] phone:min-w-[190px] text-center justify-center laptop:text-[18px] phone:text-[9px] laptop:py-[1rem] phone:py-[0.5rem] border-2 border-dark_grey rounded-[5px] inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-grey hover:ring-2 hover:ring-dark_grey focus:ring-2 focus:ring-dark_grey cursor-pointer">
             {loading ? "Loading..." : "Analyze MRI Scan"}
           </button>
 
         </div> 
 
-        <div className="border border-grey min-w-[370px] min-h-[300px] flex flex-row justify-center items-center bg-dark_grey">
+        <div className="border border-grey laptop:min-w-[370px] laptop:min-h-[300px] phone:min-w-[185px] phone:min-h-[150px] flex flex-row justify-center items-center bg-dark_grey">
           {!predictResult && (
-            <div>
+            <div className="laptop:text-[18px] phone:text-[9px]">
               <p>Upload an MRI scan to see prediction results</p>
             </div>
           )}
@@ -100,13 +100,13 @@ const BrainTumorPredictor: React.FC = () => {
             <div>
               {JSON.stringify(predictResult[0].label) === '"No Tumor"' ? (
                 <div className="flex flex-col justify-center items-center">
-                  <img src={checkmark} className="size-[60px] bg-light_ijo rounded-[60px] p-[12px]" alt="" />
-                  <p className="text-[28px] text-center text-ijo">{JSON.stringify(predictResult[0].label)} Detected</p>
+                  <img src={checkmark} className="laptop:size-[60px] phone:size-[30px] bg-light_ijo rounded-[60px] laptop:p-[12px] phone:p-[6px]" alt="" />
+                  <p className="laptop:text-[28px] phone:text-[14px] text-center text-ijo">{JSON.stringify(predictResult[0].label)} Detected</p>
                 </div>
               ) : (
                 <div className="flex flex-col justify-center items-center">
-                  <img src={exclamationmark} className="size-[48px] bg-light_red rounded-[60px] p-[16px]" alt="" />
-                  <p className="text-[28px] text-center text-[red]">{JSON.stringify(predictResult[0].label)} Detected</p>
+                  <img src={exclamationmark} className="laptop:size-[48px] phone:size-[24px] bg-light_red rounded-[60px] laptop:p-[16px] phone:p-[8px]" alt="" />
+                  <p className="laptop:text-[28px] phone:text-[14px] text-center text-[red]">{JSON.stringify(predictResult[0].label)} Detected</p>
                 </div>
               )} 
             </div>
@@ -114,10 +114,6 @@ const BrainTumorPredictor: React.FC = () => {
         </div>
 
       </div>
-
-       
-
-      
 
     </div>
   );

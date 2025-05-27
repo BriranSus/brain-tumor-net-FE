@@ -28,4 +28,9 @@
     --color-ijo: #13cc57;
     --color-light_ijo: #dcfce7;
     --color-light_red: #fee2e2;
+
+    --breakpoint-*: initial;
+    --breakpoint-phone: 20rem;
+    --breakpoint-laptop: 64rem;
+    --breakpoint-desktop: 80rem;
 }
