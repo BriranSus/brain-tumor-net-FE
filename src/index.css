@@ -24,13 +24,26 @@
     --color-grey: #787878;
     --color-light_grey: #b8b8b8;
     --color-dark_grey: #2e2e2e;
+    --color-darker_grey: #1c1c1c;
+    --color-light_black: rgb(32, 32, 32);
+    --color-background_upload: rgb(30, 30, 30);
     --color-background: #1e1e1e;
     --color-ijo: #13cc57;
     --color-light_ijo: #dcfce7;
     --color-light_red: #fee2e2;
+    --color-biru: #408EE0;
+    --color-darker_biru: #0051A2;
 
     --breakpoint-*: initial;
     --breakpoint-phone: 20rem;
     --breakpoint-laptop: 64rem;
     --breakpoint-desktop: 80rem;
+
+    --animate-spin: spin 1s ease-in-out infinite;
+
+    @keyframes spin{
+        0%{
+            transform: rotate(-360deg);
+        }
+    }
 }
