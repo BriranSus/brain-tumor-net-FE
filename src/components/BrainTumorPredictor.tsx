@@ -58,9 +58,9 @@ const BrainTumorPredictor: React.FC = () => {
         <div className="min-w-screen min-h-screen fixed inset-0 z-50 flex justify-center items-center">
           <div className="p-6 rounded-lg min-w-screen min-h-screen shadow-lg flex flex-col justify-center items-center">
             <div className="flex flex-col justify-center items-center min-h-screen min-w-screen z-50 bg-darker_grey/75">
-              <p className="text-[28px] font-[600] pb-[16px]">Analyzing MRI...</p>
+              <p className="laptop:text-[28px] phone:text-[21px] font-[600] pb-[16px]">Analyzing MRI...</p>
               <div className="w-[48px] h-[48px] mx-auto flex flex-row justify-center">
-                <img src={Loading} alt="Loading..." className="justify-center animate-spin size-[100px]" />
+                <img src={Loading} alt="Loading..." className="justify-center animate-spin laptop:size-[100px] phone:size-[75px]" />
               </div>  
             </div>
           </div>
