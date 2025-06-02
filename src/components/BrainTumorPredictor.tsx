@@ -153,7 +153,7 @@ const BrainTumorPredictor: React.FC = () => {
               <button 
                 onClick={handlePredict} 
                 disabled={loading || !imageFile}
-                className="laptop:min-w-[445px] phone:min-w-[320px] text-center justify-center laptop:text-[18px] phone:text-[9px] laptop:py-[1rem] phone:py-[0.5rem] border-2 border-dark_grey rounded-[5px] inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-grey hover:ring-2 hover:ring-dark_grey focus:ring-2 focus:ring-dark_grey cursor-pointer">
+                className="laptop:min-w-[445px] phone:min-w-[320px] text-center justify-center laptop:text-[18px] phone:text-[9px] laptop:py-[1rem] phone:py-[0.5rem] border-2 border-dark_grey rounded-[5px] inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-grey hover:ring-2 hover:ring-dark_grey focus:ring-2 focus:ring-dark_grey cursor-pointer hover:bg-light_grey">
                 {loading ? "Loading..." : "Analyze MRI Scan"}
               </button>
 
