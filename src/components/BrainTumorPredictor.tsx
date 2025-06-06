@@ -13,7 +13,7 @@ const BrainTumorPredictor: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<any>(null);
-  const [isActive, setisActive] = useState<Infotab>();
+  const [isActive, setisActive] = useState<Infotab>({activeTab: "Overview"});
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -50,7 +50,9 @@ const BrainTumorPredictor: React.FC = () => {
     setPredictResult(null);
   };
 
-  const buttonStyle = ""
+  const buttonStyle = "px-[72px] py-[8px]";
+  const ActiveStyle = "px-[72px] py-[8px] bg-grey";
+
 
   return (
     <main>
@@ -69,7 +71,7 @@ const BrainTumorPredictor: React.FC = () => {
 
       {/* Navbar */}
       <div className="flex flex-col items-center">
-        <header className="fixed bg-dark_grey border-b min-w-screen z-1">
+        <header className="bg-dark_grey border-b min-w-screen z-1">
           <div className="container px-[2rem] flex flex-row items-center">
             <img src={brain} alt="" className="laptop:size-[32px] phone:size-[18px] laptop:mr-[1rem] phone:mr-[0.5rem]"/>
             <h1 className="laptop:text-[32px] phone:text-[16px] font-bold">Brain Tumor Net</h1>
@@ -77,7 +79,7 @@ const BrainTumorPredictor: React.FC = () => {
         </header>
 
         {/* Hero Section */}
-        <div className="w-screen bg-background_upload mb-[4rem]">
+        <div className="w-screen bg-background_upload">
           <div className="laptop:mt-[8rem] laptop:mb-[4rem] phone:mt-[4rem] phone:mb-[2rem]">
             <div className="laptop:p-[48px] phone:p-[24px] laptop:mx-[64px] phone:mx-[16px] laptop:min-h-[240px] phone:min-h-[120px] bg-light_black">
               <div className="flex laptop:flex-row phone:flex-col laptop:place-content-between">
@@ -95,6 +97,12 @@ const BrainTumorPredictor: React.FC = () => {
                     >
                       Try It Now
                     </button>  
+                    <button
+                      className="bg-light_black border-1 border-grey text-[white] rounded-[4px] px-[16px] py-[8px] laptop:ml-[32px] laptop:text-[14px] phone:text-[8px] cursor-pointer hover:bg-dark_grey"
+                      onClick={() => document.getElementById("information_section")?.scrollIntoView({ behavior: "smooth" })}
+                    >
+                      Learn More
+                    </button>
                   </div>   
                 </div>
                 <div className="flex flex-row phone:justify-center laptop:justify-center laptop:items-center laptop:w-2/3 z-0 bg-darker_grey laptop:py-[1rem] laptop:px-[0rem] phone:p-[1rem]">
@@ -105,20 +113,69 @@ const BrainTumorPredictor: React.FC = () => {
           </div>
         </div>
 
-        {/* Information Section
-        <section id="information_section" className="">
+        {/* Information Section */}
+        <section id="information_section" className="laptop:mb-[48px] phone:mb-[48px] flex flex-col justify-center items-center mt-[64px]">
           <h2 className="text-center">About Brain Tumors</h2>
-          <div className="">
-            <div className="w-screen flex flex-row justify-center laptop:place-content-evenly ">
-              <button className="">test1</button>
-              <button>test2</button>
-              <button>test3</button>
-              <button>test4</button>
+          <div className="flex justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
+              <div className="w-screen flex flex-row justify-center laptop:place-content-evenly bg-dark_grey max-w-5/6">
+                <button 
+                  className={isActive.activeTab === "Overview" ? ActiveStyle : buttonStyle}
+                  onClick={() => setisActive({activeTab: "Overview"})}
+                  >Overview
+                </button>
+
+                <button 
+                  className={isActive.activeTab === "Types" ? ActiveStyle : buttonStyle}
+                  onClick={() => setisActive({activeTab: "Types"})}
+                  >Types
+                </button>
+
+                <button 
+                  className={isActive.activeTab === "Symptoms" ? ActiveStyle : buttonStyle}
+                  onClick={() => setisActive({activeTab: "Symptoms"})}
+                  >Symptoms
+                </button>
+
+                <button 
+                  className={isActive.activeTab === "Diagnosis" ? ActiveStyle : buttonStyle}
+                  onClick={() => setisActive({activeTab: "Diagnosis"})}
+                  >Diagnosis
+                </button>
+
+              </div>  
+              {isActive.activeTab === "Overview" && 
+                <div className="w-[1385px] bg-grey min-h-[400px] ">
+                  <h2>What are Brain Tumors</h2>
+                </div>
+              }
+
+              {isActive.activeTab === "Types" && 
+                <div className="w-[1385px] bg-grey min-h-[400px] ">
+                  <h2>We wok de tok</h2>
+                </div>
+              }
+
+              {isActive.activeTab === "Symptoms" && 
+                <div className="w-[1385px] bg-grey min-h-[400px] ">
+                  <h2>Not onle tok de tok</h2>
+                </div>
+              }
+
+              {isActive.activeTab === "Diagnosis" && 
+                <div className="w-[1385px] bg-grey min-h-[400px] ">
+                  <h2>HIDUP JOKOWI</h2>
+                </div>
+              }
+
             </div>  
-          </div> */}
+          </div>
+          
+
           
           
-        {/* </section> */}
+          
+        </section>
 
         {/* Upload and Detection Section */}
         <section id="upload_section" className="laptop:mb-[96px] phone:mb-[192px]">
@@ -153,7 +210,7 @@ const BrainTumorPredictor: React.FC = () => {
               <button 
                 onClick={handlePredict} 
                 disabled={loading || !imageFile}
-                className="laptop:min-w-[445px] phone:min-w-[320px] text-center justify-center laptop:text-[18px] phone:text-[9px] laptop:py-[1rem] phone:py-[0.5rem] border-2 border-dark_grey rounded-[5px] inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-grey hover:ring-2 hover:ring-dark_grey focus:ring-2 focus:ring-dark_grey cursor-pointer hover:bg-light_grey">
+                className={imageFile ? "laptop:min-w-[445px] phone:min-w-[320px] text-center justify-center laptop:text-[18px] phone:text-[9px] laptop:py-[1rem] phone:py-[0.5rem] border-2 border-dark_grey rounded-[5px] inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)] hover:border-grey hover:ring-2 hover:ring-dark_grey focus:ring-2 focus:ring-dark_grey cursor-pointer hover:bg-light_grey" : "laptop:min-w-[445px] phone:min-w-[320px] text-center justify-center laptop:text-[18px] phone:text-[9px] laptop:py-[1rem] phone:py-[0.5rem] border-2 border-dark_grey rounded-[5px] inset-shadow-[2px,6px,6px,rgba(0,0,0,0.25)]  focus:ring-2 focus:ring-dark_grey"}>
                 {loading ? "Loading..." : "Analyze MRI Scan"}
               </button>
 
