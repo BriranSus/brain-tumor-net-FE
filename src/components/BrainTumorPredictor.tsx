@@ -10,6 +10,7 @@ import Loading from "../assets/brain_loading.svg";
 import glioma from "../assets/glioma.jpg";
 import meningioma from "../assets/meningioma.jpg";
 import pituitary from "../assets/pituitary.jpg";
+import API_PATH from "../api/API_PATH";
 
 const BrainTumorPredictor: React.FC = () => {
   const [predictResult, setPredictResult] = useState<any>(null);
@@ -32,7 +33,7 @@ const BrainTumorPredictor: React.FC = () => {
     setLoading(true);
     try {
       const blob = await imageFile.arrayBuffer();
-      const client = await Client.connect("xTorch8/brain-tumor-net");
+      const client = await Client.connect(API_PATH);
 
       const result = await client.predict("/predict", {
         image: new Blob([blob], { type: imageFile.type }),
@@ -167,11 +168,11 @@ const BrainTumorPredictor: React.FC = () => {
                     <div className="flex laptop:flex-row phone:flex-col place-content-between laptop:gap-[4rem] justify-center items-center text-center mt-[2rem]">
                       <div className={OverviewStyle}>
                         <p className={InfoOverviewStyle}>Primary Tumors</p>
-                        <p className="mx-[2rem] text-justify phone:text-[12px]">Begin in the brain and typically don't spread to other organs. They can be non-cancerous or cancerous.</p>
+                        <p className="mx-[2rem] text-justify laptop:text-[18px] phone:text-[12px]">Begin in the brain and typically don't spread to other organs. They can be non-cancerous or cancerous.</p>
                       </div>
                       <div className={OverviewStyle}>
                         <p className={InfoOverviewStyle}>Secondary Tumors</p>
-                        <p className="mx-[2rem] text-justify phone:text-[12px]">Spread to the brain from cancers elsewhere in the body. They are always cancerous.</p>
+                        <p className="mx-[2rem] text-justify laptop:text-[18px] phone:text-[12px]">Spread to the brain from cancers elsewhere in the body. They are always cancerous.</p>
                         <p></p>
                       </div>
                     </div>
